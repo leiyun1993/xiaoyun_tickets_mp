@@ -1,0 +1,73 @@
+/**app.wxss**/
+@import "./style/base.wxss";
+@import "./style/vant.wxss";
+
+.safe {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-fixed {
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 0px -3px 3px rgba(0, 0, 0, .05);
+    z-index: 10;
+}
+
+.bottom-fixed .bottom-btn-box {
+    padding: 24rpx 25rpx;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-fixed .bottom-btn-box .left-btn {
+    border-radius: 6rpx;
+    background: rgba(60, 126, 246, .05);
+    border: 1rpx solid #FF515A;
+    color: #FF515A;
+    flex: 1;
+    text-align: center;
+    font-size: 32rpx;
+    padding: 12rpx 0;
+    margin-right: 20rpx;
+}
+
+.bottom-fixed .bottom-btn-box .left-text-btn {
+    color: #FF515A;
+    flex: 1;
+    text-align: center;
+    font-size: 32rpx;
+    padding: 12rpx 0;
+    margin-right: 20rpx;
+}
+
+.bottom-fixed .bottom-btn-box .right-btn {
+    border-radius: 6rpx;
+    background: #FF515A;
+    border: 1rpx solid #FF515A;
+    color: #fff;
+    flex: 2;
+    text-align: center;
+    font-size: 32rpx;
+    padding: 12rpx 0;
+}
+
+.bottom-fixed .bottom-btn-box .right-btn.disabled {
+    background: #ccc;
+    border: 1rpx solid #ccc;
+    color: #fff;
+}
+
+.bottom-fixed .bottom-btn-box .bottom-btn+.bottom-btn {
+    margin-left: 20rpx;
+}
+
+.bottom-fixed .bottom-btn-box .btn-hover,
+.bottom-fixed .bottom-btn-box .btn-disabled {
+    opacity: 0.7;
+}

@@ -1,0 +1,14 @@
+<!--pages/print/view.wxml-->
+<image class="print-img" src="{{img}}" show-menu-by-longpress></image>
+
+
+
+<painter style="position:fixed;top:-9999rpx" palette="{{painterJson}}" bind:imgOK="onImgOK" bind:imgErr="onImgErr" />
+
+
+
+<view class="safe bottom-fixed">
+  <view class="bottom-btn-box">
+    <view class="right-btn" hover-class="btn-hover" bindtap="saveTap" data-status="1">保存</view>
+  </view>
+</view>

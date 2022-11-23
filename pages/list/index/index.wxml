@@ -1,0 +1,12 @@
+<!--pages/list/index/index.wxml-->
+<view class="tab-box">
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#FF515A" title-active-color="#FF515A">
+        <van-tab title="进行中"></van-tab>
+        <van-tab title="已结束"></van-tab>
+    </van-tabs>
+</view>
+
+
+<view wx:for="{{60}}" wx:key="item">
+    {{item}}
+</view>

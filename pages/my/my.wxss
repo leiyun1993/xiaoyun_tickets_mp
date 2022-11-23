@@ -1,0 +1,31 @@
+/* pages/my/my.wxss */
+.user-card-box {
+    padding: 30rpx 30rpx 0;
+}
+
+.user-card-box .user-card {
+    background-color: #fff;
+    border-radius: 12rpx;
+    padding: 30rpx;
+    position: relative;
+}
+
+.user-card .avatar {
+    border: 1rpx solid #f6f6f6;
+}
+
+.user-card .divider {
+    border: 1rpx dashed #999;
+    height: 4rpx;
+    margin-top: 10rpx;
+}
+
+.user-card .logo {
+    position: absolute;
+    right: 20rpx;
+    top: 0rpx;
+}
+
+.van-cell {
+    --cell-vertical-padding: 40rpx;
+}

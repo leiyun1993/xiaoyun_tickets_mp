@@ -1,0 +1,18 @@
+<!--pages/my/my.wxml-->
+<view class="user-card-box">
+    <view class="user-card flex flex-center">
+        <van-image custom-class="avatar" width="100rpx" height="100rpx" fit="cover" round src="https://img.yzcdn.cn/vant/cat.jpeg"></van-image>
+        <view class="flex1 ml20">
+            <view>Yun.Lei</view>
+            <view class="divider"></view>
+        </view>
+        <van-image custom-class="logo" width="100rpx" height="100rpx" fit="cover" round src="/images/logo.png"></van-image>
+    </view>
+</view>
+
+<van-cell-group inset border="{{false}}">
+  <van-cell title="个人信息" is-link icon="manager"/>
+  <van-cell title="我赠送的" is-link icon="coupon"/>
+  <van-cell title="客服" is-link icon="phone-circle"/>
+  <van-cell title="关于" is-link icon="info" border="{{false}}"/>
+</van-cell-group>

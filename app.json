@@ -1,0 +1,57 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/my/my",
+        "pages/print/view",
+        "pages/coupons/list/list",
+        "pages/list/index/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "小云入场券",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/images/tabs/home.png",
+                "selectedIconPath": "/images/tabs/home-fill.png"
+            },
+            {
+                "pagePath": "pages/list/index/index",
+                "text": "活动管理",
+                "iconPath": "/images/tabs/all.png",
+                "selectedIconPath": "/images/tabs/all-fill.png"
+            },
+            {
+                "pagePath": "pages/coupons/list/list",
+                "text": "我领取的",
+                "iconPath": "/images/tabs/coupons.png",
+                "selectedIconPath": "/images/tabs/coupons-fill.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "/images/tabs/account.png",
+                "selectedIconPath": "/images/tabs/account-fill.png"
+            }
+        ],
+        "color": "#808080",
+        "selectedColor": "#FF515A",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black"
+    },
+    "usingComponents": {
+        "van-slider": "@vant/weapp/slider/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-steps": "@vant/weapp/steps/index",
+        "van-image": "@vant/weapp/image/index",
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index"
+    },
+    "lazyCodeLoading": "requiredComponents"
+}

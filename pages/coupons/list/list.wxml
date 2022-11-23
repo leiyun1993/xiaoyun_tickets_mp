@@ -1,0 +1,13 @@
+<!--pages/coupons/list/list.wxml-->
+<view class="tab-box">
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#FF515A" title-active-color="#FF515A">
+        <van-tab title="待使用"></van-tab>
+        <van-tab title="已使用"></van-tab>
+        <van-tab title="已过期"></van-tab>
+    </van-tabs>
+</view>
+
+
+<view wx:for="{{60}}" wx:key="item">
+{{item}}
+</view>
