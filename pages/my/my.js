@@ -1,11 +1,13 @@
 // pages/my/my.js
+import Api from "../../api/userApi.js";
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        userInfo:{},
     },
 
     /**
@@ -25,8 +27,15 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-
+    async onShow() {
+        if (!wx.$isLogin()) {
+            try {
+                await Api.ILogin();
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        this.getUserInfo();
     },
 
     /**
@@ -62,5 +71,18 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+
+    async getUserInfo() {
+        let params = {};
+        try {
+            let res = await Api.IGetUserInfo(params);
+            this.setData({
+                userInfo: res.data
+            })
+        } catch (e) {
+            console.log(e);
+            wx.$toast(e.msg)
+        }
     }
 })
