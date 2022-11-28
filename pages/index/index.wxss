@@ -1,111 +1,57 @@
 /* pages/index/index.wxss */
 page {
-    background-color: #fff;
-    --cell-vertical-padding: 30rpx;
-    --cell-horizontal-padding: 30rpx;
-    --collapse-item-content-padding: 30rpx;
+  background-color: #fff;
 }
 
-.user-info-box {
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 30rpx;
+.swipe-box {
+  padding: 30rpx;
+  overflow: hidden;
+  border-radius: 12rpx;
 }
 
-.user-info-box .avatar {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 100rpx;
+.banner-item,
+.banner-item image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
 }
 
-.user-info-box .name-box {
-    flex: 1;
-    margin-left: 30rpx;
+
+.config-item {
+  background-color: red;
+  width: 100%;
+  padding: 80rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.user-info-box .name-box .user-name {
-    font-size: 32rpx;
-    line-height: 1;
+.config-item .bg-icon {
+  position: absolute;
+  right: -10rpx;
+  bottom: -10rpx;
+  opacity: 0.08;
+  width: 150rpx;
+  height: 150rpx;
 }
 
-.user-info-box .name-box .grade-name {
-    font-size: 26rpx;
-    margin-top: 20rpx;
-    line-height: 1;
+.config-item .icon-s {
+  width: 80rpx;
+  height: 80rpx;
 }
 
-.user-info-box .icon-btn-box {
-    text-align: center;
+.config-item-box {
+  padding: 0;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 50%;
+  padding-bottom: 30rpx;
 }
 
-.user-info-box .icon-btn-box .icon {
-    width: 50rpx;
-    height: 50rpx;
-}
-
-.user-info-box .icon-btn-box .btn-text {
-    color: #aaa;
-    font-size: 24rpx;
-}
-
-.container {
-    padding: 0 30rpx;
-}
-
-.container .list-box {
-    box-shadow: 0px 0px 15px #f0f0f0;
-    border-radius: 20rpx;
-    padding: 0rpx;
-}
-.container .list-box .title-box{
-    padding: 30rpx;
-}
-.container .list-box .list-title {
-    font-size: 38rpx;
-    color: #000;
-    font-weight: bold;
-}
-
-.tag-box {
-    display: flex;
-    align-items: center;
-    margin-top: 20rpx;
-}
-
-.tag-box .tag {
-    border: 1rpx solid #808080;
-    font-size: 24rpx;
-    border-radius: 30rpx;
-    line-height: 1;
-    padding: 10rpx 22rpx;
-}
-
-.tag-box .tag.active {
-    background-color: rgba(60, 126, 246, 0.1);
-    border-color: rgba(60, 126, 246, 0.1);
-    color: #3c7ef6;
-}
-
-.tag-box .tag+.tag {
-    margin-left: 20rpx;
-}
-
-.item .item-title{
-    font-size: 32rpx;
-    font-weight: bold;
-}
-.item .item-example{
-    font-size: 28rpx;
-    color: #aaa;
-}
-.item-content{
-    padding: 0rpx 0;
-}
-.custom-button{
-    background-color: #3c7ef6;
-    color: #fff;
-}
-.collapse-no-border.van-hairline--top::after {
-    border-width: 0;
+.config-box {
+  padding-left: 30rpx;
 }

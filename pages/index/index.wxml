@@ -1,45 +1,18 @@
 <!--pages/index/index.wxml-->
-<view class="user-info-box">
-    <image src="/images/empty_header.png" class="avatar"></image>
-    <view class="name-box">
-        <view class="user-name">微信用户</view>
-        <view class="grade-name">一年级</view>
-    </view>
-    <view class="icon-btn-box">
-        <image class="icon" src="/images/ic_record.png"></image>
-        <view class="btn-text">口算历史</view>
-    </view>
+<view class="swipe-box">
+  <swiper class="banner" indicator-dots="{{true}}" indicator-active-color="#FF515A" autoplay="{{true}}" circular>
+    <swiper-item wx:for="{{bannerList}}" wx:key="index" class="banner-item">
+      <image mode="aspectFill" src="{{item.img}}"></image>
+    </swiper-item>
+  </swiper>
 </view>
 
-<view class="container">
-    <view class="list-box">
-        <view class="title-box">
-            <view class="list-title">知识点练习</view>
-            <view class="tag-box">
-                <view class="tag active">上册</view>
-                <view class="tag">下册</view>
-            </view>
-        </view>
-        <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion="{{true}}" border="{{false}}" custom-class="collapse-no-border">
-            <view class="list">
-                <van-collapse-item name="{{item.key}}" wx:for="{{list}}" wx:key="index" border="{{false}}" custom-class="collapse-no-border">
-                    <view slot="title" class="item flex flex-center">
-                        <view class="flex1">
-                            <view class="item-title">{{item.name}}</view>
-                            <view class="item-example">例题：{{item.example}}</view>
-                        </view>
-                    </view>
-                    <view class="item-content">
-                        <van-steps steps="{{ steps }}" active="{{ active }}" active-color="#ff4040" ></van-steps>
-                        <view class="flex flex-center">
-                            <van-button block type="default" class="flex1" round bindtap="printTap">打印</van-button>
-                            <van-button block color="linear-gradient(to right, #4bb0ff, #3c7ef6)" class="flex2 ml20" round>
-                                开始练习
-                            </van-button>
-                        </view>
-                    </view>
-                </van-collapse-item>
-            </view>
-        </van-collapse>
+<view class="config-box">
+  <view class="config-item-box" wx:for="{{ configList }}" wx:key="index" hover-class="base-hover" bindtap="onItemClick" data-item="{{item}}">
+    <view style="background-color: {{item.color}};" class="config-item">
+      <image class="bg-icon" src="{{item.icon}}"></image>
+      <image src="{{item.icon}}" class="icon-s"></image>
+      <view class="item-label mt30">{{item.label}}</view>
     </view>
+  </view>
 </view>

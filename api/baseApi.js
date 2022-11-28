@@ -62,6 +62,6 @@ let request = (url, data) =>
         });
     });
 
-module.exports = {
+export default  {
     request
 };

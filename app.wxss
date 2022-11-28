@@ -71,3 +71,7 @@
 .bottom-fixed .bottom-btn-box .btn-disabled {
     opacity: 0.7;
 }
+
+.base-hover{
+  opacity: 0.7;
+}

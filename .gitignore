@@ -20,6 +20,3 @@ tests/**/coverage/
 .vs
 /.vs/mini
 *.private.config.json
-project.config.json
-*.config.json
-project.config.json

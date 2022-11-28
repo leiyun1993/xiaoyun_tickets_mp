@@ -1,52 +1,47 @@
 // pages/index/index.js
-import * as DICTION from "../../utils/diction";
+import comApi from "../../api/comApi.js";
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        list: [],
-        steps: [{
-                desc: '描述信息',
-            },
-            {
-                desc: '描述信息',
-            },
-            {
-                desc: '描述信息',
-            },
-            {
-                desc: '描述信息',
-            },
-            {
-                desc: '描述信息',
-            },
-        ],
+        bannerList: [],
+        configList: [{
+            value: 1,
+            icon: "../../images/ic_add_ticket.png",
+            label: "创建活动",
+            color: "#FF515A",
+        }, {
+            value: 2,
+            icon: "../../images/ic_scan.png",
+            label: "扫码核销",
+            color: "#555555",
+        }, {
+            value: 3,
+            icon: "../../images/ic_hx.png",
+            label: "设置核销员",
+            color: "#07c160",
+        }, {
+            value: 4,
+            icon: "../../images/ic_info.png",
+            label: "工具说明",
+            color: "#ff976a",
+        }]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let steps = [];
-         new Array(5).fill(0).forEach((it, index) => {
-            steps.push({
-                desc: `${index+1}0题`
-            })
-        })
-        console.log(steps);
-        this.setData({
-            list: DICTION.GRADE1_1,
-            steps: steps
-        })
+        this.getBannerList()
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-            
+
     },
 
     /**
@@ -90,17 +85,27 @@ Page({
     onShareAppMessage() {
 
     },
-    onChange(event) {
-        this.setData({
-            activeNames: event.detail,
-        });
+    async getBannerList() {
+        let params = {};
+        try {
+            let res = await comApi.IGetBannerList(params);
+            this.setData({
+                bannerList: res.data.list
+            })
+        } catch (e) {
+            console.log(e);
+        }
     },
-    /**
-     * 打印
-     */
-    printTap(event){
-        wx.navigateTo({
-          url: `/pages/print/view`,
-        })
+    onItemClick(event) {
+        
+        const item = event.currentTarget.dataset.item;
+        console.log(item);
+        switch (Number(item.value)) {
+            case 1:
+                wx.navigateTo({
+                    url: `/pages/list/add/add`,
+                })
+                break;
+        }
     }
 })
