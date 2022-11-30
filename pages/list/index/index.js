@@ -1,11 +1,18 @@
 // pages/list/index/index.js
+import * as util from "../../../utils/util";
+import Api from "../../../api/ticketsApi";
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        active: "1",
+        pager: {
+            page_no: 1,
+            page_size: 12
+        },
+        list: []
     },
 
     /**
@@ -26,7 +33,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.getList()
     },
 
     /**
@@ -56,11 +63,28 @@ Page({
     onReachBottom() {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
+    onTabChange(event) {
+        console.log(event);
+        this.data.active = event.detail.name;
+        this.data.pager.page_no = 1;
+        this.getList();
+    },
+    async getList() {
+        let params = {
+            status: this.data.active,
+            ...this.data.pager
+        }
+        try {
+            let res = await Api.IGetList(params);
+            this.setData({
+                list: res.data.list,
+                pager: res.data.pager
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    onItemChildTap(event){
 
     }
 })

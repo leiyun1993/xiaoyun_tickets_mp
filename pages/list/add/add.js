@@ -1,4 +1,7 @@
 // pages/list/add/add.js
+import * as util from "../../../utils/util";
+import Api from "../../../api/ticketsApi";
+
 Page({
 
     /**
@@ -15,7 +18,9 @@ Page({
             active_time: "",
             contact: "",
             end_time: "",
+            instruction: "",
         },
+        descList: []
     },
 
     /**
@@ -75,15 +80,39 @@ Page({
     },
     onAddressTap(event) {
         console.log(event);
-        // wx.chooseAddress({
-        //     success: (result) => {
-        //         console.log(result)
-        //     },
-        // })
         wx.chooseLocation({
             success: (result) => {
                 console.log(result)
+
+                let {
+                    form
+                } = this.data;
+                form.address = result.address;
+                form.lat = result.latitude;
+                form.lng = result.longitude;
+                this.setData({
+                    form
+                })
             },
+        })
+    },
+    onTimeTap() {
+        wx.navigateTo({
+            url: `/pages/list/add/time`,
+            events: {
+                timeEvent: (data) => {
+                    console.log("timeEvent", data);
+                    let {
+                        form
+                    } = this.data;
+                    this.setData({
+                        form: {
+                            ...form,
+                            ...data
+                        }
+                    })
+                }
+            }
         })
     },
     onChange(event) {
@@ -93,10 +122,144 @@ Page({
         let {
             form
         } = this.data;
-        form[key] = value;
+
+        if (key == "instruction") {
+            form[key] = event.detail.value;
+        } else {
+            form[key] = value;
+        }
         console.log("form", form);
         this.setData({
             form: form
         })
+    },
+    onAddDescTap() {
+        const {
+            descList
+        } = this.data;
+        if (descList.length > 5) {
+            wx.$toast("图文介绍最多5组！");
+            return false;
+        }
+        descList.push({
+            img: "",
+            text: ""
+        })
+        this.setData({
+            descList
+        })
+    },
+    onDelDescTap(event) {
+        let index = event.currentTarget.dataset.index;
+        const {
+            descList
+        } = this.data;
+        descList.splice(index, 1);
+        this.setData({
+            descList
+        })
+    },
+    async onUploadTap(event) {
+        let index = event.currentTarget.dataset.index;
+        try {
+            let res = await wx.chooseMedia({
+                count: 1,
+                mediaType: ["image"],
+                sourceType: ['album', 'camera'],
+                sizeType: ["compressed"]
+            })
+            console.log(res);
+            let path = res.tempFiles[0].tempFilePath;
+            wx.showLoading({
+                title: '上传中...',
+                mask: true
+            })
+            let res2 = await util.uploadFile(path);
+            console.log(res2);
+            const {
+                descList
+            } = this.data;
+            descList[index].img = res2.data.url;
+            this.setData({
+                descList
+            })
+            wx.hideLoading();
+        } catch (e) {
+            console.log("e", e);
+            wx.$toast(e.msg || "上传失败！");
+        }
+    },
+    onDescChange(event) {
+        let index = event.currentTarget.dataset.index;
+        const {
+            descList
+        } = this.data;
+        descList[index].text = event.detail.value;
+
+        console.log(event);
+    },
+    async submitTap() {
+        const {
+            form,
+            descList
+        } = this.data;
+        let params = {
+            ...form
+        }
+        if (!params.name) {
+            wx.$toast("请输入活动名称！");
+            return false;
+        }
+        if (!params.address) {
+            wx.$toast("请选择活动地址！");
+            return false;
+        }
+        if (!params.address_desc) {
+            wx.$toast("请输入详细地址！");
+            return false;
+        }
+        if (!params.total) {
+            wx.$toast("请输入发券总量！");
+            return false;
+        }
+        if (!params.active_time) {
+            wx.$toast("请设置活动时间！");
+            return false;
+        }
+        if (!params.contact) {
+            wx.$toast("请输入联系电话！");
+            return false;
+        }
+
+        if (descList.length > 0) {
+            for (let item of descList) {
+                let index = descList.indexOf(item);
+                if (!item.img) {
+                    wx.$toast(`请上传图文介绍${index+1}的图片！`);
+                    return false;
+                }
+                if (!item.text) {
+                    wx.$toast(`请输入图文介绍${index+1}的文字描述！`);
+                    return false;
+                }
+            }
+        }
+        params.desc = JSON.stringify(descList);
+        try {
+            wx.showLoading({
+                title: '创建中...',
+                mask: true
+            })
+            let res = await Api.IPostAdd(params);
+            wx.$toast("创建成功！");
+            setTimeout(() => {
+                wx.switchTab({
+                    url: `/pages/list/index/index`,
+                })
+            }, 1500);
+        } catch (e) {
+            console.log(e);
+            wx.$toast(e.msg || "创建失败，请重试！");
+        }
     }
 })

@@ -1,0 +1,6 @@
+/* pages/list/add/time.wxss */
+.tip {
+    padding: 30rpx;
+    color: #808080;
+    font-size: 26rpx;
+}

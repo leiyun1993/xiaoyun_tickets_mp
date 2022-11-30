@@ -17,12 +17,23 @@ page{
     Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
     sans-serif;
     background-color: #F6F6F6;
+    box-sizing: border-box;
+    --button-primary-background-color:#FF515A;
+    --button-primary-border-color:#FF515A;
+    --main-color:#FF515A;
+    --active-color:#07c160;
+}
+view{
+    box-sizing: border-box;
 }
 .flex{
     display: flex;
 }
 .flex.flex-center{
     align-items: center;
+}
+.flex.flex-end{
+    align-items: flex-end;
 }
 .flex1{
     flex: 1;

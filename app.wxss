@@ -72,6 +72,28 @@
     opacity: 0.7;
 }
 
-.base-hover{
-  opacity: 0.7;
+.base-hover {
+    opacity: 0.7;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
 }

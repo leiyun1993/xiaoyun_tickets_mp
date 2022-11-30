@@ -1,0 +1,21 @@
+<!--pages/list/add/time.wxml-->
+
+<van-cell-group custom-class="mt30">
+    <van-field label="活动时间" input-align="right" value="{{ form.active_time }}" placeholder="请输入活动时间" bind:change="onChange" data-key="active_time" />
+    <picker mode="date" bindchange="onDateChange">
+        <van-cell title="结束时间" is-link value="{{ form.end_time||'选择结束时间'}}" />
+    </picker>
+</van-cell-group>
+
+<view class="tip">
+    <view>提示：</view>
+    活动时间仅做卡券展示，不做核销判断时间。设置结束时间之后，该活动卡券和在此时间之前使用，超过结束时间将标记为过期，无法使用！
+    <view class="mt30">活动时间示例：</view>
+    2022.11.30 14:00、2022.11.30 14:00-18:00、2022.11.30-2022.12.15 周一至周三14:00
+</view>
+
+<view class="safe bottom-fixed">
+    <view class="bottom-btn-box">
+        <view class="right-btn" hover-class="btn-hover" bindtap="saveTap" data-status="1">保存</view>
+    </view>
+</view>

@@ -1,4 +1,6 @@
 "use strict";
+
+import config from "../config/config";
 /**
  * 生成随机整数
  * @param {*} max 
@@ -45,7 +47,7 @@ export const addFunc = function (max, parentheses = false) {
     }
 
     let flag = 1;
-    if(parentheses){
+    if (parentheses) {
         flag = Math.random();
     }
     if (flag > 0.666) {
@@ -82,9 +84,9 @@ export const subtractFunc = function (max, parentheses = false) {
     if (arg1 - arg2 <= 0) {
         return subtractFunc(max);
     }
-    
+
     let flag = 1;
-    if(parentheses){
+    if (parentheses) {
         flag = Math.random();
     }
     if (flag > 0.666) {
@@ -152,4 +154,37 @@ export const getJsonList = function (list) {
         jsonList.push(itemJson);
     })
     return jsonList;
+}
+
+export const uploadFile = function (path) {
+    return new Promise((resolve, reject) => {
+        let token = wx.getStorageSync('token');
+        let header = {
+            "Authorization": `Bearer ${token}`,
+        }
+        wx.uploadFile({
+            filePath: path,
+            name: 'file',
+            url: `${config.BASE_URL}/user/upload`,
+            header: header,
+            success: (res) => {
+                if (res.statusCode == 200) {
+                    let data = JSON.parse(res.data);
+                    if (data.code == 0) {
+                        resolve(data);
+                    } else {
+                        reject(data);
+                    }
+                } else {
+                    reject({
+                        code: 1000,
+                        msg: "上传失败！"
+                    });
+                }
+            },
+            fail: (e) => {
+                reject(e);
+            }
+        })
+    })
 }

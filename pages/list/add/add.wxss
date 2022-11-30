@@ -1,1 +1,26 @@
 /* pages/list/add/add.wxss */
+page {
+    padding-bottom: 200rpx;
+    
+}
+
+.text-area {
+    padding: 30rpx;
+    background-color: #fff;
+    width: 100%;
+    min-height: 100rpx;
+}
+
+.text-area .input {
+    width: 100%;
+    min-height: 100rpx;
+}
+
+.desc-img {
+    height: 380rpx;
+    width: 100%;
+}
+
+.icon-lh {
+    height: 100%;
+}

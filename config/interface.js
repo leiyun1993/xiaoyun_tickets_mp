@@ -8,4 +8,7 @@ export default {
 
     INTERFACE_GET_BANNER_LIST: "/common/bannerList", //广告位列表
     INTERFACE_GET_BANNER_DETAIL: "/common/bannerDetail", //广告位详情
+
+    INTERFACE_POST_TICKETS_ADD: "/tickets/add", //创建入场券
+    INTERFACE_GET_TICKETS_LIST: "/tickets/list", //列表
 }
