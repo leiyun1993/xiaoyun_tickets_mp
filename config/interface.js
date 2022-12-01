@@ -11,4 +11,6 @@ export default {
 
     INTERFACE_POST_TICKETS_ADD: "/tickets/add", //创建入场券
     INTERFACE_GET_TICKETS_LIST: "/tickets/list", //列表
+    INTERFACE_POST_EDIT_STOCK: "/tickets/setStock", //调整库存
+    INTERFACE_GET_TICKETS_RECEIVED_LOG: "/tickets/receivedLog", //核销记录
 }

@@ -1,0 +1,14 @@
+/* pages/list/record/record.wxss */
+.item {
+  margin: 30rpx 30rpx 0;
+  background-color: #fff;
+  border-radius: 12rpx;
+}
+
+.key-box {
+  padding: 20rpx 30rpx;
+}
+
+.item .content {
+  padding: 20rpx 30rpx;
+}

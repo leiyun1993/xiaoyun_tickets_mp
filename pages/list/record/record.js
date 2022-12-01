@@ -1,5 +1,4 @@
-// pages/list/index/index.js
-import * as util from "../../../utils/util";
+// pages/list/record/record.js
 import Api from "../../../api/ticketsApi";
 Page({
 
@@ -7,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: "1",
+    id: "",
+    active: "2",
     pager: {
       page_no: 1,
       page_size: 12
@@ -19,7 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.data.id = options.id;
+    this.getList();
   },
 
   /**
@@ -33,7 +34,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.getList()
+
   },
 
   /**
@@ -85,6 +86,7 @@ Page({
   },
   async getList() {
     let params = {
+      id: this.data.id,
       status: this.data.active,
       ...this.data.pager
     }
@@ -92,7 +94,7 @@ Page({
       this.setData({
         loading: true
       })
-      let res = await Api.IGetList(params);
+      let res = await Api.IGetReceivedLog(params);
       this.setData({
         list: res.data.list,
         pager: res.data.pager,
@@ -106,17 +108,4 @@ Page({
       })
     }
   },
-  onItemChildTap(event) {
-    let item = event.currentTarget.dataset.item;
-    let key = event.currentTarget.dataset.key;
-    if (key == "stock") {
-      wx.navigateTo({
-        url: `/pages/list/edit/stock?id=${item.id}`,
-      })
-    } else if (key == "record") {
-      wx.navigateTo({
-        url: `/pages/list/record/record?id=${item.id}`,
-      })
-    }
-  }
 })

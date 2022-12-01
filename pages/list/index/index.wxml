@@ -1,39 +1,45 @@
 <!--pages/list/index/index.wxml-->
 <view class="tab-box">
-    <van-tabs active="{{ active }}" bind:change="onTabChange" color="#FF515A" title-active-color="#FF515A">
-        <van-tab title="进行中" name="1"></van-tab>
-        <van-tab title="已结束" name="2"></van-tab>
-    </van-tabs>
+  <van-tabs active="{{ active }}" bind:change="onTabChange" color="#FF515A" title-active-color="#FF515A">
+    <van-tab title="进行中" name="1"></van-tab>
+    <van-tab title="已结束" name="2"></van-tab>
+  </van-tabs>
 </view>
 
-<view class="list">
-    <view wx:for="{{list}}" wx:key="index" class="item" hover-class="base-hover">
-        <view class="flex flex-center tag-box">
-            <view class="tag {{item.status==1?'active':'stop'}}">
-                <van-icon name="flag-o" size="12" />
-                {{item.status==1?'进行中':'已结束'}}
-            </view>
-        </view>
-        <view class="flex content flex-center">
-            <view class="name  {{item.status==1?'active':'stop'}}">
-                {{item.name}}
-            </view>
-            <view class="flex1 ml20">
-                <van-progress custom-class="mt20" percentage="{{item.received/item.total*100}}" pivot-text="{{item.received}} / {{item.total}}" />
-                <view class="flex flex-center f14 g6 mt60">
-                    <view class="flex1">核销人数：<label class="b g3">{{item.used}}</label></view>
-                    <view class="flex1">浏览人次：<label class="b g3">{{item.used}}</label></view>
-                </view>
-                <view class="g9 f14 mt30 ellipsis">{{item.active_time}}</view>
-            </view>
-        </view>
-        <view class="btn-box flex flex-center">
-            <view class="flex1"></view>
-            <van-button size="mini" type="primary" catchtap="onItemChildTap">调整库存</van-button>
-            <van-button size="mini" custom-class="ml30" type="info" catchtap="onItemChildTap">核销记录</van-button>
-        </view>
+<view class="list" wx:if="{{pager.page_no!=1 || !loading}}">
+  <view wx:for="{{list}}" wx:key="index" class="item">
+    <view class="flex flex-center tag-box">
+      <view class="tag {{item.status==1?'active':'stop'}}">
+        <van-icon name="flag-o" size="12" />
+        {{item.status==1?'进行中':'已结束'}}
+      </view>
     </view>
+    <view class="flex content flex-center">
+      <view class="name  {{item.status==1?'active':'stop'}}">
+        {{item.name}}
+      </view>
+      <view class="flex1 ml20">
+        <van-progress custom-class="mt20" percentage="{{item.received/item.total*100}}" pivot-text="{{item.received}} / {{item.total}}" />
+        <view class="flex flex-center f14 g6 mt60">
+          <view class="flex1">核销人数：<label class="b g3">{{item.used}}</label></view>
+          <view class="flex1">浏览人次：<label class="b g3">{{item.used}}</label></view>
+        </view>
+        <view class="g9 f14 mt30 ellipsis">{{item.active_time}}</view>
+      </view>
+    </view>
+    <view class="btn-box flex flex-center">
+      <view class="flex1"></view>
+      <van-button size="mini" type="primary" catchtap="onItemChildTap" data-key="stock" data-item="{{item}}">调整库存</van-button>
+      <van-button size="mini" custom-class="ml30" type="info" catchtap="onItemChildTap" data-key="record" data-item="{{item}}">核销记录</van-button>
+    </view>
+  </view>
 </view>
 
-
-<van-empty description="暂无数据" wx:if="{{list.length==0}}" />
+<view wx:if="{{pager.page_no==1 && loading}}" class="bgw pt30">
+  <van-skeleton title avatar row="3" wx:for="{{6}}" wx:key="index" />
+</view>
+<van-empty description="暂无数据" wx:elif="{{!loading && list.length==0}}" />
+<view class="tc pt20 pb20" wx:else>
+  <van-loading size="16px" type="spinner" wx:if="{{pager.page_no>1 && loading}}">加载中...</van-loading>
+  <view class="f13 g9" wx:if="{{list.length>0 && !loading && pager.page_no>=pager.total_pages}}">没有更多了~</view>
+</view>

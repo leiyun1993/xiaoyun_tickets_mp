@@ -12,6 +12,9 @@
 .w7{width:70%;margin:0 auto;}
 .w8{width:80%;margin:0 auto;}
 .w9{width:90%;margin:0 auto;}
+.bgw{
+  background-color: #fff;
+}
 page{
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
     Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',

@@ -1,0 +1,30 @@
+<!--pages/list/record/record.wxml-->
+<view class="tab-box">
+  <van-tabs active="{{ active }}" bind:change="onTabChange" color="#FF515A" title-active-color="#FF515A">
+    <van-tab title="已核销" name="2"></van-tab>
+    <van-tab title="未核销" name="1"></van-tab>
+  </van-tabs>
+</view>
+
+
+<view class="list" wx:if="{{pager.page_no!=1 || !loading}}">
+  <view wx:for="{{list}}" wx:key="index" class="item">
+    <view class="flex flex-center key-box">
+      核销码：{{item.key}}
+    </view>
+    <view class="flex content flex-center">
+      <van-image custom-class="avatar" width="100rpx" height="100rpx" fit="cover" round src="{{item.avatar}}"></van-image>
+      <view>{{item.nick_name}}</view>
+      <view>{{item.use_time}}</view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{pager.page_no==1 && loading}}" class="bgw pt30">
+  <van-skeleton title avatar row="3" wx:for="{{6}}" wx:key="index" />
+</view>
+<van-empty description="暂无数据" wx:elif="{{!loading && list.length==0}}" />
+<view class="tc pt20 pb20" wx:else>
+  <van-loading size="16px" type="spinner" wx:if="{{pager.page_no>1 && loading}}">加载中...</van-loading>
+  <view class="f13 g9" wx:if="{{list.length>0 && !loading && pager.page_no>=pager.total_pages}}">没有更多了~</view>
+</view>

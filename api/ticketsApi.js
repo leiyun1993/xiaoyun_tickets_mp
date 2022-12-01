@@ -11,5 +11,13 @@ export default {
         const result = baseAPI.request(config.BASE_URL + interfaces.INTERFACE_GET_TICKETS_LIST, params);
         return result;
     },
+    IPostEditStock(params) {
+        const result = baseAPI.request(config.BASE_URL + interfaces.INTERFACE_POST_EDIT_STOCK, params);
+        return result;
+    },
+    IGetReceivedLog(params) {
+        const result = baseAPI.request(config.BASE_URL + interfaces.INTERFACE_GET_TICKETS_RECEIVED_LOG, params);
+        return result;
+    },
 
 }

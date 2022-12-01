@@ -1,0 +1,9 @@
+<!--pages/list/edit/stock.wxml-->
+<van-cell-group custom-class="mt30">
+  <van-field title-width="20vw" label="发券总量" input-align="right" value="{{ form.total }}" placeholder="请输入发券总量" maxlength="3" bind:change="onChange" type="number" data-key="total" />
+</van-cell-group>
+<view class="safe bottom-fixed">
+    <view class="bottom-btn-box">
+        <view class="right-btn" hover-class="btn-hover" bindtap="submitTap" data-status="1">提交</view>
+    </view>
+</view>
