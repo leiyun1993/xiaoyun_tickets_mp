@@ -1,0 +1,42 @@
+<!--pages/order/list/list.wxml-->
+<!--pages/list/record/record.wxml-->
+<view class="tab-box">
+  <van-tabs active="{{ active }}" bind:change="onTabChange" color="#FF515A" title-active-color="#FF515A">
+    <van-tab title="全部" name="1"></van-tab>
+    <van-tab title="未支付" name="2"></van-tab>
+    <van-tab title="已支付" name="3"></van-tab>
+  </van-tabs>
+</view>
+
+
+<view class="list" wx:if="{{pager.page_no!=1 || !loading}}">
+  <view wx:for="{{list}}" wx:key="index" class="item" hover-class="base-hover" bindtap="onItemTap" data-item="{{item}}">
+    <view class="flex flex-center">
+      创建时间：{{item.add_time_str}}
+      <view class="flex1"></view>
+      <view class="status{{item.status}}">{{item.status_name}}</view>
+    </view>
+    <view class="flex content flex-center f14 mt30">
+      <view class="flex1 g9">数量：{{item.count}}</view>
+      <view class="flex1 g9">原价：￥{{item.original_price}}</view>
+      <view class="flex1 g9">优惠：￥{{item.discount_price}}</view>
+    </view>
+    <view class="flex content flex-center mt30">
+      <view class="flex1 g9">实付：<text class="main-color">{{item.price}}元</text></view>
+    </view>
+    <view class="btn-box">
+      <van-button type="primary" size="mini" class="" wx:if="{{item.status==0}}" catchtap="onSetPaidTap" data-item="{{item}}">已支付</van-button>
+      <van-button type="info" size="mini" class="ml20" wx:if="{{item.status==0}}">收款</van-button>
+      <van-button type="danger" size="mini" class="ml20" catchtap="onDelTap" data-item="{{item}}">删除</van-button>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{pager.page_no==1 && loading}}" class="bgw pt30">
+  <van-skeleton title avatar row="3" wx:for="{{6}}" wx:key="index" />
+</view>
+<van-empty description="暂无数据" wx:elif="{{!loading && list.length==0}}" />
+<view class="tc pt20 pb20" wx:else>
+  <van-loading size="16px" type="spinner" wx:if="{{pager.page_no>1 && loading}}">加载中...</van-loading>
+  <view class="f13 g9" wx:if="{{list.length>0 && !loading && isFinish}}">没有更多了~</view>
+</view>

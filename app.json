@@ -8,12 +8,15 @@
     "pages/list/add/add",
     "pages/list/add/time",
     "pages/list/edit/stock",
-    "pages/list/record/record"
+    "pages/list/record/record",
+    "pages/cart/index/index",
+    "pages/order/list/list",
+    "pages/order/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小云入场券",
+    "navigationBarTitleText": "书店线下收款",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
@@ -26,14 +29,14 @@
         "selectedIconPath": "/images/tabs/home-fill.png"
       },
       {
-        "pagePath": "pages/list/index/index",
-        "text": "活动管理",
+        "pagePath": "pages/cart/index/index",
+        "text": "购物车",
         "iconPath": "/images/tabs/all.png",
         "selectedIconPath": "/images/tabs/all-fill.png"
       },
       {
-        "pagePath": "pages/coupons/list/list",
-        "text": "我领取的",
+        "pagePath": "pages/order/list/list",
+        "text": "订单",
         "iconPath": "/images/tabs/coupons.png",
         "selectedIconPath": "/images/tabs/coupons-fill.png"
       },
@@ -62,7 +65,6 @@
     "van-progress": "@vant/weapp/progress/index",
     "van-skeleton": "@vant/weapp/skeleton/index"
   },
-  "lazyCodeLoading": "requiredComponents",
   "requiredPrivateInfos": [
     "chooseLocation"
   ]

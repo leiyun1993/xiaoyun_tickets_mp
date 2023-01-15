@@ -1,0 +1,59 @@
+<!--pages/order/detail/detail.wxml-->
+<view class="">
+
+  <view class="list">
+    <view class="item">
+      <view class="flex flex-center">
+        <view class="g9">订单号</view>
+        <view class="flex1 tr b">{{detail.order_no}}</view>
+      </view>
+      <view class="flex flex-center mt20">
+        <view class="g9">状态</view>
+        <view class="flex1 tr g9">{{detail.status==1?'已支付':'未支付'}}</view>
+      </view>
+      <view class="flex flex-center mt10">
+        <view class="g9">创建时间</view>
+        <view class="flex1 tr g9">{{detail.add_time_str}}</view>
+      </view>
+      <view class="flex flex-center mt10">
+        <view class="g9">原价</view>
+        <view class="flex1 tr g9">{{detail.original_price}}元</view>
+      </view>
+      <view class="flex flex-center mt10">
+        <view class="g9">优惠价</view>
+        <view class="flex1 tr g9">- {{detail.discount_price}}元</view>
+      </view>
+      <view class="flex flex-center mt10">
+        <view class="g9">实际支付</view>
+        <view class="flex1 tr main-color b">{{detail.price}}元</view>
+      </view>
+    </view>
+    <view class="item p15 flex" wx:for="{{detail.goods_list}}" wx:key="index">
+      <image class="img" src="{{item.img_url}}" mode="aspectFit"></image>
+      <view class="content flex1">
+        <view class="goods-name">{{item.goods_name}}</view>
+        <view class="price-box flex">
+          <view class="act-price flex1">
+            <block wx:if="{{item.show_price>0}}">
+              <text class="unit">￥</text>
+              {{item.show_price}}
+            </block>
+            <block wx:else>
+              免费
+            </block>
+          </view>
+          <view class="ori-price flex1 ml20">
+            <text class="unit">￥</text>
+            {{item.price}}
+          </view>
+          <view class="book-count flex1 g9 tr">
+            x1
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<van-submit-bar loading="{{postLoading}}" price="{{ detail.price * 100 }}" button-text="立即支付" bind:submit="onOrderSubmit" safe-area-inset-bottom="{{true}}">
+</van-submit-bar>

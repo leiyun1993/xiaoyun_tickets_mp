@@ -1,0 +1,5 @@
+/* pages/order/detail/detail.wxss */
+@import "../../cart/index/index.wxss";
+.price-box .book-count.tr{
+  text-align: right;
+}

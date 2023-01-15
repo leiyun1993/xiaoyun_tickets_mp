@@ -1,0 +1,52 @@
+<!--pages/cart/index.wxml-->
+
+<van-empty description="暂无商品，去首页扫码添加！" wx:if="{{detail.goods_list.length==0}}" />
+<view class="list" wx:else>
+  <view class="item p15 flex" wx:for="{{detail.goods_list}}" wx:key="index">
+    <image class="img" src="{{item.img_url}}" mode="aspectFit"></image>
+    <view class="content flex1">
+      <view class="goods-name">{{item.goods_name}}</view>
+      <view class="price-box flex">
+        <view class="act-price flex1">
+          <block wx:if="{{item.show_price>0}}">
+            <text class="unit">￥</text>
+            {{item.show_price}}
+          </block>
+          <block wx:else>
+            免费
+          </block>
+        </view>
+        <view class="ori-price flex1 ml20">
+          <text class="unit">￥</text>
+          {{item.price}}
+        </view>
+        <view class="book-count flex1 g9">
+          x1
+        </view>
+        <view class="del g9" bindtap="itemDelTap" hover-class="base-hover" data-item="{{item}}">
+          删除
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="flex flex-center">
+      <view class="g9">原价</view>
+      <view class="flex1 tr g9">{{detail.original_price}}元</view>
+    </view>
+    <view class="flex flex-center mt10">
+      <view class="g9">优惠价</view>
+      <view class="flex1 tr g9">- {{detail.discount_price}}元</view>
+    </view>
+    <view class="flex flex-center mt10">
+      <view class="g9">实际支付</view>
+      <view class="flex1 tr main-color b">{{detail.price}}元</view>
+    </view>
+  </view>
+</view>
+
+<van-submit-bar loading="{{postLoading}}" price="{{ detail.price * 100 }}" button-text="提交订单" bind:submit="onOrderSubmit" safe-area-inset-bottom="{{false}}">
+  <van-checkbox value="{{ is_paid }}" bind:change="onStatusChange">
+    <text class="f14 g9">是否已支付</text>
+  </van-checkbox>
+</van-submit-bar>

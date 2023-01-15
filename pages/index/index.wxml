@@ -1,18 +1,111 @@
-<!--pages/index/index.wxml-->
-<view class="swipe-box">
-  <swiper class="banner" indicator-dots="{{true}}" indicator-active-color="#FF515A" autoplay="{{true}}" circular>
-    <swiper-item wx:for="{{bannerList}}" wx:key="index" class="banner-item">
-      <image mode="aspectFill" src="{{item.img}}"></image>
-    </swiper-item>
-  </swiper>
-</view>
-
 <view class="config-box">
-  <view class="config-item-box" wx:for="{{ configList }}" wx:key="index" hover-class="base-hover" bindtap="onItemClick" data-item="{{item}}">
-    <view style="background-color: {{item.color}};" class="config-item">
-      <image class="bg-icon" src="{{item.icon}}"></image>
-      <image src="{{item.icon}}" class="icon-s"></image>
-      <view class="item-label mt30">{{item.label}}</view>
+  <view class="config-item-box" hover-class="base-hover" bindtap="onItemClick">
+    <view style="background-color:#FF515A;" class="config-item">
+      <image class="bg-icon" src="../../images/ic_scan.png"></image>
+      <image src="../../images/ic_scan.png" class="icon-s"></image>
+      <view class="item-label mt10">扫码结算</view>
     </view>
   </view>
+</view>
+
+<view class="p30">
+  <view class="tc f20 b">· 我的购书信息 ·</view>
+  <van-grid column-num="3" border="{{false}}" custom-class="mt30 item">
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">{{myStat.order_count}}</view>
+        <view class="g9 f14 mt10">订单数</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18 main-color b">{{myStat.order_paid_count}}</view>
+        <view class="g9 f14 mt10">已支付</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">{{myStat.order_uppaid_count}}</view>
+        <view class="g9 f14 mt10">未支付</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">{{myStat.price}}</view>
+        <view class="g9 f14 mt10">总金额</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18 main-color b">{{myStat.price_paid}}</view>
+        <view class="g9 f14 mt10">已付金额</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">{{myStat.price_unpaid}}</view>
+        <view class="g9 f14 mt10">待付金额</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">{{myStat.count}}</view>
+        <view class="g9 f14 mt10">已购书数量</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">{{myStat.original_price}}</view>
+        <view class="g9 f14 mt10">原价</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18 main-color b">{{myStat.discount_price}}</view>
+        <view class="g9 f14 mt10">已省</view>
+      </view>
+    </van-grid-item>
+  </van-grid>
+</view>
+
+<view class="p30">
+  <view class="tc f20 b">· 书店信息统计 ·</view>
+  <van-grid column-num="3" border="{{false}}" custom-class="mt30 item">
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">25.00</view>
+        <view class="g9 f14 mt10">订单数</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18 main-color b">25.00</view>
+        <view class="g9 f14 mt10">已支付</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">25.00</view>
+        <view class="g9 f14 mt10">未支付</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">25.00</view>
+        <view class="g9 f14 mt10">总金额</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18 main-color b">25.00</view>
+        <view class="g9 f14 mt10">已付金额</view>
+      </view>
+    </van-grid-item>
+    <van-grid-item use-slot>
+      <view class="tc">
+        <view class="f18">25.00</view>
+        <view class="g9 f14 mt10">待付金额</view>
+      </view>
+    </van-grid-item>
+  </van-grid>
 </view>

@@ -1,7 +1,4 @@
 /* pages/index/index.wxss */
-page {
-  background-color: #fff;
-}
 
 .swipe-box {
   padding: 30rpx;
@@ -20,7 +17,7 @@ page {
 .config-item {
   background-color: red;
   width: 100%;
-  padding: 80rpx 30rpx;
+  padding: 20rpx 30rpx;
   box-sizing: border-box;
   border-radius: 12rpx;
   color: #fff;
@@ -30,8 +27,8 @@ page {
 
 .config-item .bg-icon {
   position: absolute;
-  right: -10rpx;
-  bottom: -10rpx;
+  right: 10rpx;
+  bottom: 10rpx;
   opacity: 0.08;
   width: 150rpx;
   height: 150rpx;
@@ -44,14 +41,19 @@ page {
 
 .config-item-box {
   padding: 0;
-  padding-right: 30rpx;
   box-sizing: border-box;
-  float: left;
   position: relative;
-  width: 50%;
-  padding-bottom: 30rpx;
+  width: 100%;
 }
 
 .config-box {
-  padding-left: 30rpx;
+  padding: 30rpx;
+}
+
+.item {
+  border-radius: 12rpx;
+  background-color: #fff;
+}
+.p30{
+  padding: 30rpx;
 }

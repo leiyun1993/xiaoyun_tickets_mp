@@ -1,0 +1,72 @@
+/* pages/cart/index.wxss */
+page{
+  padding-bottom: 150rpx;
+}
+.list {
+  padding: 30rpx;
+}
+
+.list .item {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+
+.list .item .img {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.list .item+.item {
+  margin-top: 20rpx;
+}
+
+.list .item .content {
+  margin-left: 20rpx;
+}
+
+.goods-name {
+  font-size: 28rpx;
+  color: #898989;
+  line-height: 38rpx;
+  height: 76rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.content .price-box {
+  margin-top: 22rpx;
+  align-items: flex-end;
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.price-box .act-price {
+  color: #FF515A;
+}
+
+.price-box .act-price .unit {
+  font-size: 20rpx;
+}
+
+.price-box .del {
+  text-align: right;
+}
+
+.price-box .book-count {
+  text-align: center;
+}
+
+.price-box .ori-price {
+  color: #aaa;
+  text-decoration: line-through;
+  font-size: 24rpx;
+
+}
+.price-box .ori-price .unit {
+  font-size: 18rpx;
+}
